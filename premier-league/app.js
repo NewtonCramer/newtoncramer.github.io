@@ -44,7 +44,6 @@ function mostraClassificacao() {
   }
 
   let tabela = tabela_pontuacao(temporadasSelecionadas);
-  console.log(tabela);
   let fim = orderBy(tabela, ["P", "SG", "GP"], [false, false, false]);
   let quantidadeDeTimes = fim.length - 1;
 

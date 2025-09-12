@@ -83,7 +83,7 @@ function mostraClassificacao() {
     <td id="GC-${i}" class="gols-contra"></td> 
     <td id="SG-${i}" class="saldo"></td> 
     <td id="AP-${i}" class="aproveitamento"></td>`;
-    document.querySelector("#tabelaClassificacao").appendChild(tr);
+    document.querySelector("#tabelaClassificacao > tBody").appendChild(tr);
   }
 
   for (let i = 1; i <= quantidadeDeTimes; i++) {

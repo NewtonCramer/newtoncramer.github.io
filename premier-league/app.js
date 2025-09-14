@@ -47,8 +47,8 @@ function mostraClassificacao() {
   let fim = orderBy(tabela, ["P", "SG", "GP"], [false, false, false]);
   let quantidadeDeTimes = fim.length - 1;
 
-  document.querySelector("#tabelaClassificacao").innerHTML =
-    `<tr class="cabecalho"> 
+  document.querySelector("#tabelaClassificacao").innerHTML = `<tHead>
+    <tr class="cabecalho"> 
     <th></th> 
     <th>Equipes</th> 
     <th class="cabecalho-cinza">P</th> 
@@ -60,7 +60,9 @@ function mostraClassificacao() {
     <th class="cabecalho-cinza">GC</th> 
     <th>SG</th> 
     <th class="cabecalho-cinza">%</th> 
-    </tr> `;
+    </tr> 
+    </tHead>
+    <tBody></tBody>`;
 
   document.querySelector(".cabecalho").style.backgroundColor = "#0a2239";
   document.querySelector(".cabecalho").style.color = "white";
@@ -142,12 +144,11 @@ btnMarcarTudo.click();
 
 const tabelaHTML = document.querySelector("#tabelaClassificacao > tBody");
 
-document.addEventListener("click", (e) => {
+tabelaHTML.addEventListener("click", (e) => {
   let lista = e.target.id.split("-");
-  let indice = lista[lista.length - 1];
+  let indice = lista[lista.length - 1] - 1;
   tabelaHTML.children[indice].style.backgroundColor = "#ddd";
-  // console.log(tabelaHTML);
-  for (let i = 1; i < tabelaHTML.children.length; i++) {
+  for (let i = 0; i < tabelaHTML.children.length; i++) {
     let elemento = tabelaHTML.children[i];
     if (i == indice) {
       continue;

@@ -140,7 +140,7 @@ btnMarcarTudo.click();
 
 ////////////deixar linha destacada ao clicar em cima dela
 
-const tabelaHTML = document.querySelector("#tabelaClassificacao");
+const tabelaHTML = document.querySelector("#tabelaClassificacao > tBody");
 
 document.addEventListener("click", (e) => {
   let lista = e.target.id.split("-");

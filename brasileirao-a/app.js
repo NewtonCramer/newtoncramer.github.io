@@ -144,13 +144,12 @@ btnMarcarTudo.click();
 
 ////////////deixar linha destacada ao clicar em cima dela
 
-const tabelaHTML = document.querySelector("#tabelaClassificacao");
+const tabelaHTML = document.querySelector("#tabelaClassificacao > tBody");
 
 document.addEventListener("click", (e) => {
   let lista = e.target.id.split("-");
   let indice = lista[lista.length - 1];
   tabelaHTML.children[indice].style.backgroundColor = "#ddd";
-  console.log(tabelaHTML);
   for (let i = 1; i < tabelaHTML.children.length; i++) {
     let elemento = tabelaHTML.children[i];
     if (i == indice) {

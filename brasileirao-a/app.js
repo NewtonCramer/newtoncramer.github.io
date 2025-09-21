@@ -28,7 +28,7 @@ function handleCaixa() {
   });
 
   distinct(temporadasSelecionadas);
-  console.log(temporadasSelecionadas);
+  // console.log(temporadasSelecionadas);
 
   btnApagarTudo.disabled = false;
   btnMarcarTudo.disabled = false;
@@ -51,7 +51,7 @@ function mostraClassificacao() {
   );
   let quantidadeDeTimes = fim.length - 1;
 
-  document.querySelector("#tabelaClassificacao").innerHTML = `<tHead>
+  document.querySelector("#tabelaClassificacao").innerHTML = `<thead>
     <tr class="cabecalho"> 
     <th></th> 
     <th>Equipes</th> 
@@ -65,8 +65,8 @@ function mostraClassificacao() {
     <th>SG</th> 
     <th class="cabecalho-cinza">%</th> 
     </tr> 
-    </tHead>
-    <tBody></tBody>`;
+    </thead>
+    <tbody></tbody>`;
 
   document.querySelector(".cabecalho").style.backgroundColor = "#0a2239";
   document.querySelector(".cabecalho").style.color = "white";
@@ -100,6 +100,20 @@ function mostraClassificacao() {
     document.querySelector(`#SG-${i}`).innerHTML = fim[i][8];
     document.querySelector(`#AP-${i}`).innerHTML = fim[i][9];
   }
+  const tabelaHTML = document.querySelector("#tabelaClassificacao > tbody");
+
+  tabelaHTML.addEventListener("click", (e) => {
+    let lista = e.target.id.split("-");
+    let indice = lista[lista.length - 1] - 1;
+    tabelaHTML.children[indice].style.backgroundColor = "#ddd";
+    for (let i = 0; i < tabelaHTML.children.length; i++) {
+      let elemento = tabelaHTML.children[i];
+      if (i == indice) {
+        continue;
+      }
+      elemento.style.backgroundColor = "white";
+    }
+  });
 }
 /////
 
@@ -143,23 +157,6 @@ function handleBtnMarcarTudo() {
 /////tudo marcado
 /////botao "apagar tudo" desabilitado
 btnMarcarTudo.click();
-
-////////////deixar linha destacada ao clicar em cima dela
-
-const tabelaHTML = document.querySelector("#tabelaClassificacao > tBody");
-
-tabelaHTML.addEventListener("click", (e) => {
-  let lista = e.target.id.split("-");
-  let indice = lista[lista.length - 1] - 1;
-  tabelaHTML.children[indice].style.backgroundColor = "#ddd";
-  for (let i = 0; i < tabelaHTML.children.length; i++) {
-    let elemento = tabelaHTML.children[i];
-    if (i == indice) {
-      continue;
-    }
-    elemento.style.backgroundColor = "white";
-  }
-});
 
 /////////////// menu
 

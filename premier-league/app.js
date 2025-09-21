@@ -96,6 +96,21 @@ function mostraClassificacao() {
     document.querySelector(`#SG-${i}`).innerHTML = fim[i][8];
     document.querySelector(`#AP-${i}`).innerHTML = fim[i][9];
   }
+
+  const tabelaHTML = document.querySelector("#tabelaClassificacao > tBody");
+
+  tabelaHTML.addEventListener("click", (e) => {
+    let lista = e.target.id.split("-");
+    let indice = lista[lista.length - 1] - 1;
+    tabelaHTML.children[indice].style.backgroundColor = "#ddd";
+    for (let i = 0; i < tabelaHTML.children.length; i++) {
+      let elemento = tabelaHTML.children[i];
+      if (i == indice) {
+        continue;
+      }
+      elemento.style.backgroundColor = "white";
+    }
+  });
 }
 /////
 
@@ -141,21 +156,6 @@ function handleBtnMarcarTudo() {
 btnMarcarTudo.click();
 
 ////////////deixar linha destacada ao clicar em cima dela
-
-const tabelaHTML = document.querySelector("#tabelaClassificacao > tBody");
-
-tabelaHTML.addEventListener("click", (e) => {
-  let lista = e.target.id.split("-");
-  let indice = lista[lista.length - 1] - 1;
-  tabelaHTML.children[indice].style.backgroundColor = "#ddd";
-  for (let i = 0; i < tabelaHTML.children.length; i++) {
-    let elemento = tabelaHTML.children[i];
-    if (i == indice) {
-      continue;
-    }
-    elemento.style.backgroundColor = "white";
-  }
-});
 
 /////////////// menu
 
